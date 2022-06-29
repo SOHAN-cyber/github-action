@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Using run you can the bash shell                 #Name of the step inside steps
         run: echo "Hello this is our first github action"      #To run the shell command use run 
-      - name: multline script     #USing pipe symbol you can run multiple command 
+      - name: multline script     #USing pipe symbol you can run multiple commands
         run: |
           node -v
           npm -v 
