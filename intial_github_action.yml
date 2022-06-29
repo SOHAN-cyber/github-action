@@ -15,9 +15,17 @@ jobs:
           node -v
           npm -v 
             - name: python command
-      - name: python shell
+      - name: python shell  #This is to run the in python shell
         run: |
           import platform
           print
           (platform.processor())
-        shell: python       #This is to run the in python shell
+        shell: python      
+  run-windows-commands:
+    runs-on: windows-latest
+    steps:
+      - name: Powershell Directory
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash

@@ -20,3 +20,11 @@ jobs:
           print
           (platform.processor())
         shell: python       #This is to run the in python shell
+  run-windows-commands:       #This is a Second Job
+    runs-on: windows-latest
+    steps:
+      - name: Powershell Directory
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
