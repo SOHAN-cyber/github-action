@@ -23,6 +23,7 @@ jobs:
         shell: python      
   run-windows-commands:
     runs-on: windows-latest
+    needs: ["run-shell-command"]    #This is basically a type of dependency that this stepd should run only if previous stage is successful
     steps:
       - name: Powershell Directory
         run: Get-Location
