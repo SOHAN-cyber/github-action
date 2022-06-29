@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-github-actions:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Simple JS actions
         id: greet
@@ -16,4 +16,10 @@ jobs:
           who-to-greet: Sohan
       - name:  Greeting time
         run: echo "${{ steps.greet.outputs.time }}"
-
+      - name: checkout_code
+        id: checkout
+        uses: actions/checkout@v1
+      - name: List Files
+        run: | 
+          pwd
+          ls
