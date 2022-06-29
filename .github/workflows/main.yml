@@ -1,6 +1,6 @@
 name: My first github workflow
 
-on: [pull]  #Type of Event that will trigger the github worflow
+on: commit  #Type of Event that will trigger the github worflow
 
 jobs:
   run-shell-command: 
