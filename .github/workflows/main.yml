@@ -29,3 +29,13 @@ jobs:
       - name: Directory Bash
         run: pwd
         shell: bash
+  run-com:
+    runs-on: windows-latest
+    if: ${{ always() }}           #always() conditional expression so that it always runs after job1 and job2 have completed, regardless of whether they were successful
+    needs: ["run-windows-commands", "run-shell-command"]     #Expression URL: https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
+    steps:
+      - name: Powershell Directory
+        run: Dir
+      - name: Directory Bash
+        run: ls
+        shell: bash
