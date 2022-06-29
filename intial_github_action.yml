@@ -5,7 +5,7 @@ on:    #Type of Event that will trigger the github worflow
   pull_request:
     branches: [ master ]  
 jobs:
-  run-shell-command: 
+  run-shell-command:  #This is the name of Steps
     runs-on: ubuntu-latest  #With this you can use type of runner with specific version like ubuntu/Windows/Macos
     steps:
       - name: Using run you can the bash shell                 #Name of the step inside steps
@@ -29,4 +29,14 @@ jobs:
         run: Get-Location
       - name: Directory Bash
         run: pwd
+        shell: bash
+  run-windows-com:
+    runs-on: windows-latest
+    if: ${{ always() }}           #always() conditional expression so that it always runs after job1 and job2 have completed, regardless of whether they were successful
+    needs: ["run-windows-commands", "run-shell-command"]     #Expression URL: https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
+    steps:
+      - name: Powershell Directory
+        run: Dir
+      - name: Directory Bash
+        run: ls
         shell: bash
