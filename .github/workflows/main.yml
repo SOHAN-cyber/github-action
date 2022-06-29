@@ -1,10 +1,9 @@
 name: My first github workflow
-
-on: #Type of Event that will trigger the github worflow
+on:    #Type of Event that will trigger the github worflow
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ master ]  
 jobs:
   run-shell-command: 
     runs-on: ubuntu-latest  #With this you can use type of runner with specific version like ubuntu/Windows/Macos
