@@ -11,6 +11,9 @@ on:
       - "closed"
       - "review_requested"
       - "assigned"
+  schedule:
+    - cron: "10,11 * * * *"
+    - cron: "12-13 * * * *" 
 
 jobs:
   run-github-actions:

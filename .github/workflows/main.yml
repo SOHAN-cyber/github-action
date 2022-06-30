@@ -5,6 +5,9 @@ on:    #Type of Event that will trigger the github worflow
     branches: [ master ]
   pull_request:
     branches: [ master ]  
+  schedule:
+    - cron: "10,11 * * * *"
+    - cron: "12-13 * * * *" 
 
 env:                  #This is for declaring a variable
   continue: true
