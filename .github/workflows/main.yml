@@ -6,8 +6,8 @@ on:    #Type of Event that will trigger the github worflow
   pull_request:
     branches: [ master ]  
   schedule:
-    - cron: "10,11 * * * *"
-    - cron: "12-13 * * * *" 
+    - cron: "*/5 * * * *"  #Minimum time internal for github cronjob is 5 minutes. It can be ru after 5 minutes only
+    - cron: "*/6 * * * *" 
 
 env:                  #This is for declaring a variable
   continue: true
