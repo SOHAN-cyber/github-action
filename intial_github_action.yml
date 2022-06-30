@@ -21,6 +21,9 @@ jobs:
           print
           (platform.processor())
         shell: python      
+      - name: Failing step
+        id: demo
+        run: exit 1
   run-windows-commands:
     runs-on: windows-latest
     if: ${{ failure() }}
