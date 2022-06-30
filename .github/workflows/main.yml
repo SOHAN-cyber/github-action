@@ -72,12 +72,12 @@ jobs:
           STEP_ENV: Step-var               
         run: echo "Hello this is our first github action"     
       - name: multline script 
-        env:
-          STEP_ENV: Step-var   
         run: |
           node -v
           npm -v 
       - name: Printing Global variable 
+        env:
+          STEP_ENV: Step-var   
         run: |
           echo "GB_ENV: ${GB_ENV}"
           echo "JOB_ENV: ${JOB_ENV}"
