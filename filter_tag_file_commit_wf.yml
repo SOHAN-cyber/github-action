@@ -1,0 +1,48 @@
+name: My first github workflow
+on:    #Type of Event that will trigger the github worflow
+  push:
+    branches: 
+      - master
+      - "dev/*" 
+      - "dev/**"
+      - "!dev/ss/s1" #This worfklow will not run in this branch
+    tags:
+      - "v1/*"
+      - "v1/**"
+      - "v[12].[0-8]+.[0-9]"  #v1.8.1 & v2.0.0 
+    path:
+      - "**.js"
+      - "!README.md"
+      - "**/src/**"
+
+
+jobs:
+  run-shell-command: 
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Using run you can the bash shell                 
+        run: echo "Hello this is our first github action"     
+      - name: multline script    
+        run: |
+          node -v
+          npm -v 
+            - name: python command
+      - name: python shell 
+        run: |
+          import platform
+          print
+          (platform.processor())
+        shell: python      
+      - name: Failing step
+        id: demo
+        run: exit 1
+  run-windows-commands:
+    runs-on: windows-latest
+    if: ${{ failure() }}
+    needs: ["run-shell-command"]    
+    steps:
+      - name: Powershell Directory
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
