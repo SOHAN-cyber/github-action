@@ -27,7 +27,7 @@ jobs:
         shell: python       #This is to run the in python shell
   run-windows-commands:       #This is a Second Job
     runs-on: windows-latest
-    if: ${{ failure() && fromJSON(env.continue) == 'true' }}
+    if: ${{ failure() }}
     needs: ["run-shell-command"]
     steps:
       - name: Powershell Directory
