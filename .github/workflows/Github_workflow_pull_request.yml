@@ -1,0 +1,38 @@
+name: Action workflow
+
+on: 
+  push:
+    branches:
+      - "master"
+  pull_request:
+    types:
+      - "opened"
+      - "reopened"
+      - "closed"
+      - "review_requested"
+      - "assigned"
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple JS actions
+        id: greet
+        uses: actions/hello-world-javascript-action@v1 #It is like name + repo_name and then @ then (branch_name/version/commit-id in releases)
+        with:
+          who-to-greet: Sohan
+      - name:  Greeting time
+        run: echo "${{ steps.greet.outputs.time }}"
+      - name: checkout_code
+        id: checkout
+        uses: actions/checkout@v1
+      - name: List Files
+        run: | 
+          pwd
+          ls
+          echo  $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+      - name: Just for changing it
+        run: echo "Greeting from Github"
