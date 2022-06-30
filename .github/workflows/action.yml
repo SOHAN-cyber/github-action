@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - "master"
+  pull_request:
+    types:
+      - "opened"
+      - "reopened"
+      - "closed"
+      - "review_requested"
+      - "assigned"
 
 jobs:
   run-github-actions:
