@@ -1,0 +1,38 @@
+name: My first github workflow
+on:    #Type of Event that will trigger the github worflow
+  repository_dispatch:    # ["dev", "stage", "production"] You can also right this like this one.
+    types: 
+      - dev
+      - stage
+      - production
+
+jobs:
+  run-shell-command: 
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Using run you can the bash shell                 
+        run: echo "Hello this is our first github action"     
+      - name: multline script    
+        run: |
+          node -v
+          npm -v 
+            - name: python command
+      - name: python shell 
+        run: |
+          import platform
+          print
+          (platform.processor())
+        shell: python      
+      - name: Failing step
+        id: demo
+        run: exit 1
+  run-windows-commands:
+    runs-on: windows-latest
+    if: ${{ failure() }}
+    needs: ["run-shell-command"]    
+    steps:
+      - name: Powershell Directory
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
