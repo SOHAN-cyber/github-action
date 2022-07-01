@@ -9,7 +9,7 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
-        if: ${{github.repositoryUrl == 'https://github.com/SOHAN-cyber/github-action.git'}}
+        if: ${{github.repositoryUrl == 'git://github.com/SOHAN-cyber/github-action.git'}}
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         id: test_id
