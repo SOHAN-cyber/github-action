@@ -9,10 +9,10 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
-        id: test_id
         if: ${{github.events_name == 'push'}}
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
+        id: test_id
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
         run: echo '${{ toJSON(runner) }}'
