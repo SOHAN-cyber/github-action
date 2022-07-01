@@ -21,4 +21,6 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
 ### **Now if you want to view the context of file of encrypted file then run the below command:**
                                          cat $HOME/secret
 
+## If you want to know more about github sencrypted-secrets then click on Link:
+           **https://docs.github.com/en/actions/security-guides/encrypted-secrets**
 
