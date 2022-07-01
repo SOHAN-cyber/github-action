@@ -3,7 +3,7 @@ on:
   push:
     branches: [ master ]
 env:
-  GITHUB_TOKEN: Github
+  TOKEN: Github
 
 jobs:
   github_checkout_stage:
@@ -12,3 +12,22 @@ jobs:
     - name: checkout_code
       id: checkout
       uses: actions/checkout@v1
+    - name: push a random file
+      run: |
+        pwd
+        ls -l
+        git init
+        echo $GITHUB_ACTOR
+        git remote add origin "https://$GITHUB_ACTOR:${{secrets.TOKEN}}@github.com/SOHAN-cyber/github-action.git"
+        git config --global user.email "my-bot@bot.com"
+        git config --global user-name "my-bot"
+        git fetch
+        git checkout master
+        git branch --set-upstream-to=origin/master
+        git pull
+        ls -a
+        echo $RANDOM >> RANDOM.txt
+        git add .
+        ls -a
+        git commit -m "added random file"
+        git push origin master
