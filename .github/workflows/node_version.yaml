@@ -3,13 +3,14 @@ name: Node version changing
 on: push
 
 jobs:
-  runs-on: ubuntu-latest
-  steps: 
-    - name: node version
-      run: node -v
-    - name: changing node version
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
-    - name: printing the node version
-      run: node -v 
+  node0-version-changes:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: node version
+        run: node -v
+      - name: changing node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: printing the node version
+        run: node -v 
