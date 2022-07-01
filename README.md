@@ -7,7 +7,7 @@ It is also pre installed in Ubuntu OS.You only need to run the command to encryp
 
 ***********************
 ## **GPG COMMAND FOR ENCRYPTING FILE CONTENT:**
-gpg --symmetric --cipher-algo AES256 secret 
+    gpg --symmetric --cipher-algo AES256 secret 
 
 ## *DECRYPTING FILE CONTENT AT RUNTIME IN GITHUB RUNNER*
 
