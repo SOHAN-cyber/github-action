@@ -1,84 +1,49 @@
-# name: My first github workflow
-
-# on:    #Type of Event that will trigger the github worflow
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]  
-#   schedule:
-#     - cron: "*/5 * * * *"  #Minimum time internal for github cronjob is 5 minutes. It can be ru after 5 minutes only
-#     - cron: "*/6 * * * *" 
-
-# env:                  #This is for declaring a variable
-#   continue: true
-
-# jobs:
-#   run-shell-command: 
-#     runs-on: ubuntu-latest  #With this you can use type of runner with specific version like ubuntu/Windows/Macos
-#     steps:
-#       - name: Using run you can the bash shell                 #Name of the step inside steps
-#         run: echo "Hello this is our first github action"      #To run the shell command use run 
-#       - name: multline script     #USing pipe symbol you can run multiple commands
-#         run: |
-#           node -v
-#           npm -v 
-#       - name: python command
-#         run: |
-#           import platform
-#           print
-#           (platform.processor())
-#         shell: python       #This is to run the in python shell
-#   run-windows-commands:       #This is a Second Job
-#     runs-on: windows-latest
-#     if: ${{ failure() }}
-#     needs: ["run-shell-command"]
-#     steps:
-#       - name: Powershell Directory
-#         run: Get-Location
-#       - name: Directory Bash
-#         run: |
-#          pwd
-#          ls
-#         shell: bash
-#   run-com:
-#     runs-on: windows-latest
-#     if: ${{ always() }}           #always() conditional expression so that it always runs after job1 and job2 have completed, regardless of whether they were successful
-#     needs: ["run-windows-commands", "run-shell-command"]     #Expression URL: https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
-#     steps:
-#       - name: Powershell Directory
-#         run: Dir
-#       - name: Directory Bash
-#         run: ls
-#         shell: bash
-
-
-
-
 name: My first github workflow
-on:   
+
+on:    #Type of Event that will trigger the github worflow
   push:
     branches: [ master ]
-env:
-  GB_ENV: Github
+  pull_request:
+    branches: [ master ]  
+
+env:                  #This is for declaring a variable
+  continue: true
 
 jobs:
   run-shell-command: 
-    runs-on: ubuntu-latest  
-    env:
-      JOB_ENV: Job-VARIABLE
+    runs-on: ubuntu-latest  #With this you can use type of runner with specific version like ubuntu/Windows/Macos
     steps:
-      - name: Using run you can the bash shell  
-        env:
-          STEP_ENV: Step-var               
-        run: echo "Hello this is our first github action"     
-      - name: multline script 
+      - name: Using run you can the bash shell                 #Name of the step inside steps
+        run: echo "Hello this is our first github action"      #To run the shell command use run 
+      - name: multline script     #USing pipe symbol you can run multiple commands
         run: |
           node -v
           npm -v 
-      - name: Printing Global variable 
-        env:
-          STEP_ENV: Step-var   
+      - name: python command
         run: |
-          echo "GB_ENV: ${GB_ENV}"
-          echo "JOB_ENV: ${JOB_ENV}"
-          echo "STEP_ENV: ${STEP_ENV}"
+          import platform
+          print
+          (platform.processor())
+        shell: python       #This is to run the in python shell
+  run-windows-commands:       #This is a Second Job
+    runs-on: windows-latest
+    if: ${{ failure() }}
+    needs: ["run-shell-command"]
+    steps:
+      - name: Powershell Directory
+        run: Get-Location
+      - name: Directory Bash
+        run: |
+         pwd
+         ls
+        shell: bash
+  run-com:
+    runs-on: windows-latest
+    if: ${{ always() }}           #always() conditional expression so that it always runs after job1 and job2 have completed, regardless of whether they were successful
+    needs: ["run-windows-commands", "run-shell-command"]     #Expression URL: https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
+    steps:
+      - name: Powershell Directory
+        run: Dir
+      - name: Directory Bash
+        run: ls
+        shell: bash
