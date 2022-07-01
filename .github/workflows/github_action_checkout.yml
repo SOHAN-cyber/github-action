@@ -9,6 +9,6 @@ jobs:
   github_checkout_stage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v4
-        with:
-          repo-token: "${{ github.token }}"
+    - name: checkout_code
+      id: checkout
+      uses: actions/checkout@v1
