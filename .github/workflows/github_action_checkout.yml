@@ -9,9 +9,6 @@ jobs:
   github_checkout_stage:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout_code
-      id: checkout
-      uses: actions/checkout@v1
     - name: push a random file
       run: |
         pwd
