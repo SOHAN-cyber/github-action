@@ -18,8 +18,3 @@ jobs:
     - name: Print the file context
       run: cat $HOME/secret.json
 
-# --batch: This is basically for not to ask anything on prompt like password 
-# --yes: It is  for everything that gpg need  to run this in background 
-# --decrypt: It is for decrypting the file
-# --output: It to output the file in location $HOME/secret.json
-# secret.json: It is path of file which need to be decrypt
