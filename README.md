@@ -7,7 +7,7 @@ It is also pre installed in Ubuntu OS.You only need to run the command to encryp
 
 ***********************
 ## **GPG COMMAND FOR ENCRYPTING FILE CONTENT:**
-                        gpg --symmetric --cipher-algo AES256 secret 
+gpg --symmetric --cipher-algo AES256 secret 
 
 ## *DECRYPTING FILE CONTENT AT RUNTIME IN GITHUB RUNNER*
 
@@ -16,7 +16,7 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
 - Github Workflow: Where you will call your secret as enviornmental variable.
 
 ##  **GPG COMMAND FOR DECRYPTING FILE CONTENT:**
-                gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret secret.gpg
+gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret secret.gpg
 
 # Short Description about decryption the command
  - quiet: Try to be as quiet as possible.
@@ -27,7 +27,7 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
  - secret.json: It is path of file which needs to be decrypt. This file is in pwd in our case.
 
 ### **Now if you want to view the context of file of encrypted file then run the below command:**
-                                         cat $HOME/secret
+cat $HOME/secret
 
 ## If you want to know more about github sencrypted-secrets then click on Link:
  https://docs.github.com/en/actions/security-guides/encrypted-secrets 
