@@ -31,3 +31,48 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
 
 ## If you want to know more about github Encrypted-secrets then click on below Link:
  https://docs.github.com/en/actions/security-guides/encrypted-secrets 
+
+### GITHUB Functions & Expression ###
+- You can use expressions to programmatically set environment variables in workflow files and access contexts. An expression can be any combination of literal values, references to a context, or functions
+- You can Define expression at job level & steps level also.
+- Github Expression can be anything  related to contexts.
+
+
+Example expression in an if conditional
+    if: ${{ expression }}
+    if: ${{ github.event_name == 'push' }}
+    if: ${{ always()}}
+
+## For more examples about expression & context Link on below link: ##
+https://docs.github.com/en/actions/learn-github-actions/contexts
+
+
+#### GITHUB ACTIONS ERROR HANDLING & Timeout ###
+- You can also handles errors in github actions as we are doing in jenkins or jenkins.
+- If you think their is any steps in a github workflow that can produce error and will result in failure of  workflow then you can use it.
+- Timeout function in github workflow is very useful when you know that your workflow or action will take longer time then expected. Then you can define a timeout inside your job. 
+- Default timeout time in github action is 1-2 minutes
+
+## ERROR HANDLING EXAMPLE: ##
+    jobs:
+    run-github-actions:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Error step
+            run: eccho "This Will not run"
+            continue-on-error: true
+        - name: Testing steps
+            run: echo "steps to run after error step"
+
+## TIMEOUT HANDLING EXAMPLE:  ##
+
+    jobs:
+    run-github-actions:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Error step
+            run: echo "This Will take longer time execute"
+            timeout-minutes: 2
+
+
+
