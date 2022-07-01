@@ -19,7 +19,6 @@ jobs:
         git config --global user.email "my-bot@bot.com"
         git config --global user-name "my-bot"
         git fetch
-        git checkout master
         git branch --set-upstream-to=master
         git pull
         ls -a
