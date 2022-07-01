@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name:  checkout Code
-      uses: action/checkout@v3
+      uses: actions/checkout@v1
     - name: Decrypt File
       run: gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret.json secret.gpg
       env: 
