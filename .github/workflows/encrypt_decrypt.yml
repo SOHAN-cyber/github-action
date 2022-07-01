@@ -1,4 +1,4 @@
-name: My first github workflow
+name: Github Encryption & Decryption
 on:   
   push:
     branches: [ master ]
