@@ -10,4 +10,4 @@ GPG(GNU Privacy Guard):
 gpg --symmetric --cipher-algo AES256 secret 
 cat secret.gpg
 ***************************
-Now you file another file named as secret.gpg which wll be encrypted file and that can be decrypted using password that you provides
+Now you have another file named as secret.gpg which wll be encrypted file and that can be decrypted using password that you provides

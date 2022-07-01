@@ -1,6 +1,6 @@
-name: My first github workflow
-on:    #Type of Event that will trigger the github worflow
-  repository_dispatch:    # ["dev", "stage", "production"] You can also right this like this one.
+name: Custom Event in Github to trigger GitHub WOrkflow/Actions
+on:   
+  repository_dispatch:    
     types: 
       - dev
       - stage

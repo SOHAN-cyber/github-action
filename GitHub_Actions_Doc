@@ -1,17 +1,17 @@
-					GitHub Action
-Github action is nothing but a tool that is used to automate your task. Like when you pull or push create or closed issue to github.
+# 					GitHub Action
+# Github action is nothing but a tool that is used to automate your task. Like when you pull or push create or closed issue to github.
 
-					WORKFLOW
-1)Workflow contain th Jobs and each jobs contains mutiple steps.
-2)We can also run multiple parallel jobs in github actions.
-					ACTIONS
-Github Actions are also like workflow but they are more related to doing the task when action need to done.
-It reduce the code complexybility. SUch that I can write a action which will deploy a website on a server with the parameter that you need 
-to pass at the time of calling it.
+# 					WORKFLOW
+# 1)Workflow contain th Jobs and each jobs contains mutiple steps.
+# 2)We can also run multiple parallel jobs in github actions.
+# 					ACTIONS
+# Github Actions are also like workflow but they are more related to doing the task when action need to done.
+# It reduce the code complexybility. SUch that I can write a action which will deploy a website on a server with the parameter that you need 
+# to pass at the time of calling it.
 
-					RUNNER
-A runner is a virtual machine that can be hosted or provided by Github or you can use for own machine. It can be linux, macos/Windows.
-It has preinstalled software.
-Github runner are Hosted by github and we can't customise the runner.
-Self Hosted Runner are the runner or machine that are managed and maintain by the user or our own hosted machine.
+# 					RUNNER
+# A runner is a virtual machine that can be hosted or provided by Github or you can use for own machine. It can be linux, macos/Windows.
+# It has preinstalled software.
+# Github runner are Hosted by github and we can't customise the runner.
+# Self Hosted Runner are the runner or machine that are managed and maintain by the user or our own hosted machine.
 
