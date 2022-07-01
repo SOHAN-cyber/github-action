@@ -1,0 +1,14 @@
+name: My first github workflow
+on:   
+  push:
+    branches: [ master ]
+env:
+  GITHUB_TOKEN: Github
+
+jobs:
+  github_checkout_stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: "${{ github.token }}"
