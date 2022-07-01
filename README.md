@@ -38,10 +38,10 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
 - Github Expression can be anything  related to contexts.
 
 
-Example expression in an if conditional
+## EXAMPLE EXPRESSION WITH IF STATEMENT: ##
     if: ${{ expression }}
     if: ${{ github.event_name == 'push' }}
-    if: ${{ always()}}
+    if: ${{ always() }}
 
 ## For more examples about expression & context Link on below link: ##
 https://docs.github.com/en/actions/learn-github-actions/contexts
