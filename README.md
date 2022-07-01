@@ -23,8 +23,8 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
  - batch: Use batch mode. Never ask, do not allow interactive commands.
  - yes: It is  for everything that gpg need to run this in as we can't enter anything at run time inside github runner.
  - decrypt: It is for decrypting the file.
- - output: It is to output the file in location $HOME/secret.json.
- - secret.json: It is path of file which needs to be decrypt. this file is in pwd in our case.
+ - output: It is to store decrypted file in location $HOME/secret.json.
+ - secret.json: It is path of file which needs to be decrypt. This file is in pwd in our case.
 
 ### **Now if you want to view the context of file of encrypted file then run the below command:**
                                          cat $HOME/secret
