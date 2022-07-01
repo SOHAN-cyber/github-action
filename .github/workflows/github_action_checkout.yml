@@ -17,7 +17,7 @@ jobs:
         echo $GITHUB_ACTOR
         git remote add origin "https://$GITHUB_ACTOR:${{secrets.TOKEN}}@github.com/SOHAN-cyber/github-action.git"
         git config --global user.email "my-bot@bot.com"
-        git config --global user-name "my-bot"
+        git config --global user.name "my-bot"
         git fetch
         git config --global init.defaultBranch master
         git pull
