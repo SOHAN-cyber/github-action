@@ -80,19 +80,19 @@ https://docs.github.com/en/actions/learn-github-actions/contexts
 
 ### EXAMPLE FOR MATRIX: ##
 
-  jobs:
-    node0-version-changes:
-      strategy:
-        matrix:
-         os: [macos-latest,ubuntu-latest]
-         node_version: [6,8,10,14]
-        fail-fast: true
-        max-parallel: 2
-      runs-on: ${{matrix.os}}
-      steps: 
+    jobs:
+      node0-version-changes:
+        strategy:
+          matrix:
+           os: [macos-latest,ubuntu-latest,windows-latest]
+           node_version: [6,8,10,14]
+          fail-fast: true
+          max-parallel: 2
+        runs-on: ${{matrix.os}}
+        steps: 
         - name: node version
-          run: node -v
+            run: node -v
         - name: changing node version
-          uses: actions/setup-node@v3
-          with:
+            uses: actions/setup-node@v3
+            with:
             node-version: ${{ matrix.node_version }}
