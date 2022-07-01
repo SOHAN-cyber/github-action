@@ -74,7 +74,7 @@ https://docs.github.com/en/actions/learn-github-actions/contexts
             run: echo "This Will take longer time execute"
             timeout-minutes: 2
 
-### MATRIX & STRATERGY IN GITHUB ACTION ###
+### MATRIX & STRATERGY CONTEXT IN GITHUB ACTION ###
 - The matrix context contains the matrix properties defined in the workflow file that apply to the current job.
 - The strategy context contains information about the matrix execution strategy for the current job
 
