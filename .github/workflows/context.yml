@@ -19,11 +19,12 @@ jobs:
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
-        if: ${{steps.test_id.outputs.outcome == 'success'}}
+        if: ${{steps.test_id.outcome == 'success'}}
         run: echo '${{ toJSON(matrix) }}'
   normal_ci:
     runs-on: ubuntu-20.04
     if: ${{ github.event_name == 'push' }}
+    needs: ["dump_contexts_to_log"]
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
