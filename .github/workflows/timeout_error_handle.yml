@@ -1,0 +1,24 @@
+name: Timeout & Error Handling in github workflow
+
+on: 
+  push:
+    branches:
+      - "master"
+  pull_request:
+    types:
+      - "opened"
+      - "reopened"
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Error step
+        run: eccho "This Will not run"
+        continue-on-error: true
+        timeout-minutes: 2
+      - name: Running another job after failure
+        run: |
+          ls 
+          pwd
+      - name: Running Another job
+        run: echo "THis is a test job to run after error"
