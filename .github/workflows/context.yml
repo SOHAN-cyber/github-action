@@ -23,7 +23,7 @@ jobs:
         run: echo '${{ toJSON(matrix) }}'
   normal_ci:
     runs-on: ubuntu-20.04
-    if: ${{ github.events == 'push' }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
