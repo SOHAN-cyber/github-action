@@ -9,8 +9,8 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
-        id: test-id
-        if: github.events_name == 'push'
+        id: test_id
+        if: ${{github.events_name == 'push'}}
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
@@ -22,7 +22,7 @@ jobs:
         run: echo '${{ toJSON(matrix) }}'
   normal_ci:
     runs-on: ubuntu-20.04
-    if: steps.test-id.outputs.outcome == 'success'
+    if: ${{steps.test_id.outputs.outcome == 'success'}}
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
