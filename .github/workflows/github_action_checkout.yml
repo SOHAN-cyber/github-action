@@ -19,8 +19,7 @@ jobs:
         git config --global user.email "my-bot@bot.com"
         git config --global user.name "my-bot"
         git fetch
-        git branch --set-upstream-to=origin/master
-        git pull
+        git pull origin master
         ls -a
         echo $RANDOM >> RANDOM.txt
         git add .
