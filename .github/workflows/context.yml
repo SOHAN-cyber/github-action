@@ -9,6 +9,7 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
+        if: github.events_name == 'push'
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
@@ -18,3 +19,11 @@ jobs:
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
+  normal_ci:
+    runs-on: ubuntu-20.04
+    if: runner.os == 'Linux'
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+      - name: Run ls command
+        run: ls -la 
