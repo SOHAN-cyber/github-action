@@ -9,9 +9,9 @@ It is also pre installed in Ubuntu OS.You only need to run the command to encryp
 ## **GPG COMMAND FOR ENCRYPTING FILE CONTENT:**
                         gpg --symmetric --cipher-algo AES256 secret 
 
-In If you want to decrypt the file in Github Runner then you need to pass the password as secret in github runner and for the you need to make use of
-- Github Secrets
-- Github Workflow enviornmental variable in which you will pass th value of Github Secret
+If you want to decrypt the file in Github Hosted Runner then you need to pass the password as secret in github runner and for that you  need to make use of
+- Github Secrets: It will be used to save the password as secret in github. Which will secure your password to be expose as plain text.
+- Github Workflow: Where you will call your secret as enviornmental variable.
 ##  **GPG COMMAND FOR DECRYPTING FILE CONTENT:**
                 gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret.json secret.gpg
 
