@@ -16,6 +16,9 @@ If you want to decrypt the file in Github Hosted Runner then you need to pass th
 - Github Workflow: Where you will call your secret as enviornmental variable.
 
 ##  **GPG COMMAND FOR DECRYPTING FILE CONTENT:**
-                gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret.json secret.gpg
+                gpg --quiet --batch  --yes --decrypt --passphrase="$PASS"  --output $HOME/secret secret.gpg
+
+Now if you want to view the context of file of encrypted file then run the below command:
+                cat $HOME/secret
 
 
