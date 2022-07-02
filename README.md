@@ -96,3 +96,30 @@ https://docs.github.com/en/actions/learn-github-actions/contexts
             uses: actions/setup-node@v3
             with:
             node-version: ${{ matrix.node_version }}
+
+
+### SNYK Vulnerabilities Scanner ###
+- Synk is Saas tool which is used to find the vulnerabilities inside the Code. It is available in Github Marketplace.
+- To configure Snyk with Github Action. Firstly you need create a account in 
+    snyk.io
+- After account is created you need to copy the token the snyk account and save as secret in github account.
+- Snyk is used to find the vulnerabilities in open source and thirdy party library, IAC & in containers.
+- Snyk is available as SaaS.
+- It is also called as SAST.(Static  Application  Security Testing).
+
+## Example: ##
+        name: Example workflow for Node using Snyk
+        on: push
+        jobs:
+        security:
+            runs-on: ubuntu-latest
+            steps:
+            - uses: actions/checkout@master
+            - name: Run Snyk to check for vulnerabilities
+                uses: snyk/actions/node@master
+                continue-on-error: true
+                env:
+                SNYK_TOKEN: ${{ secrets.SNYK_SECRET }}
+
+### For more Click on Below link: ###:
+    https://github.com/marketplace/actions/snyk

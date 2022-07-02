@@ -55,5 +55,4 @@ jobs:
       uses: docker://technosophos/slack-notify
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACKWEBHOOK }}
-        SLACK_MESSAGE: 'Hi Team, This is to inform you that Last NodeJs Worflow was ${{ job.status }}'
-            
+        SLACK_MESSAGE: 'Hi Team, This is to inform you that Last NodeJs Worflow was ${{ job.status }}, <${{github.event.reposirotyUrl}}|check it out>'
