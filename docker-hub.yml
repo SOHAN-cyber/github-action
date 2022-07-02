@@ -1,0 +1,28 @@
+name: Build & push Docker image to DockerHub
+on:
+  push:
+    branches:
+      - "main"  
+env:
+  username: ${{secrets.DOCKERHUB_USERNAME}}    
+  password: ${{secrets.DOCKERHUB_PASSWORD}}    
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        DOCKERHUB_REGISTRY: "dogra21703/sohan"
+        IMAGE_TAG: ${{ github.sha }}
+        TAG: latest
+      run: |
+        docker build -t $DOCKERHUB_REGISTRY:$IMAGE_TAG .
+        docker image tag $DOCKERHUB_REGISTRY:$IMAGE_TAG $DOCKERHUB_REGISTRY:$TAG
+        docker login -u $username -p $password
+        docker push $DOCKERHUB_REGISTRY:$IMAGE_TAG
+        docker push  $DOCKERHUB_REGISTRY:$TAG
