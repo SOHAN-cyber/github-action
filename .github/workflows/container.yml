@@ -7,8 +7,8 @@ env:
   AWS_REGION:   us-west-2                         
   ECR_REPOSITORY_NAME: github-test-action         
   CONTAINER_NAME: github-action 
-  BRANCH_NAME: main
-  GITHUB_REPO: "SOHAN-cyber/NODE-MERN-PROJECT"                
+  BRANCH_NAME: 'main'
+  GITHUB_REPO: 'SOHAN-cyber/NODE-MERN-PROJECT'                
 jobs:
   deploy:
     name: Deploy
@@ -18,9 +18,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        repository: ${{ GITHUB_REPO }}
-        token: ${{ secrets.TOKEN }}
-        ref: ${{ BRANCH_NAME }}
+        repository: ${{GITHUB_REPO}}
+        token: ${{ secrets.TOKEN}}
+        ref: ${{BRANCH_NAME}}
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
