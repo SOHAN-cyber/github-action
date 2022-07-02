@@ -1,0 +1,29 @@
+name: Node version changing
+
+on: push
+
+jobs:
+  node0-version-changes:
+    strategy:
+      matrix:
+       os: [macos-latest,ubuntu-latest,windows-latest]
+       node_version: [6,8,10,14]
+       include:
+        - os: ubuntu-20.04
+          node_version: 4 
+          is_ubuntu_8: "true"   #Enviornmental variable
+       exclude:
+        - os: ubuntu-latest
+          node_version: [10,14]
+      fail-fast: true
+      max-parallel: 2
+    runs-on: ${{matrix.os}}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8}}
+    steps: 
+      - name: changing node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Env variable version
+        run:  echo $IS_UBUNTU_8
