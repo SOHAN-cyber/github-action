@@ -121,5 +121,5 @@ https://docs.github.com/en/actions/learn-github-actions/contexts
                 env:
                 SNYK_TOKEN: ${{ secrets.SNYK_SECRET }}
 
-### For more Click on Below link: ###:
+### For more Click on Below link: ###
     https://github.com/marketplace/actions/snyk
