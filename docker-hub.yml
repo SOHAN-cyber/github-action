@@ -14,6 +14,30 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Cache the dependices
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: value-cache
+        restore-keys: |
+          value-cache
+    - name: Upload test coverage & Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage
+        path: ./coverage
+    - name: Upload the build folder
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: ./build
+    - name: Download the artifact
+      uses: actions/download-artifact
+      with:
+        name: |
+         coverage
+         build        
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
