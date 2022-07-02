@@ -18,9 +18,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        repository: $GITHUB_REPO
-        token: $secrets.TOKEN
-        ref: $BRANCH_NAME
+        repository: ${GITHUB_REPO}
+        token: ${secrets.TOKEN}
+        ref: ${BRANCH_NAME}
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
