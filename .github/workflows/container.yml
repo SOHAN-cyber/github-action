@@ -8,7 +8,7 @@ env:
   ECR_REPOSITORY_NAME: github-test-action         
   CONTAINER_NAME: github-action 
   BRANCH_NAME: main
-  GITHUB_REPO: SOHAN-cyber/NODE-MERN-PROJECT                  
+  GITHUB_REPO: "SOHAN-cyber/NODE-MERN-PROJECT"                
 jobs:
   deploy:
     name: Deploy
