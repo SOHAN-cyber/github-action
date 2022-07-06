@@ -48,3 +48,9 @@ jobs:
       run: |
          
          kubectl apply -f dep.yml
+    - name: Sending Slack notification
+      if: always()
+      uses: docker://technosophos/slack-notify
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACKWEBHOOK }}
+        SLACK_MESSAGE: 'Hi Team, This is to inform you that Last NodeJs Worflow was ${{ job.status }}'
