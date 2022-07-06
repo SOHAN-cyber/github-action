@@ -1,0 +1,50 @@
+name: Build & push Docker image to DockerHub
+on:
+  push:
+    branches:
+      - "main"  
+env:
+  username: ${{secrets.DOCKERHUB_USERNAME}}    
+  password: ${{secrets.DOCKERHUB_PASSWORD}} 
+  AWS_REGION:   ap-south-1          
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: build the project
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+    - name: build the project
+      run: npm i
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        DOCKERHUB_REGISTRY: ${{ secrets.DOCKERHUB_REGISTRY}}
+        IMAGE_TAG: ${{ github.sha }}
+        TAG: latest
+      run: |
+        docker build -t $DOCKERHUB_REGISTRY:$IMAGE_TAG .
+        docker image tag $DOCKERHUB_REGISTRY:$IMAGE_TAG $DOCKERHUB_REGISTRY:$TAG
+        docker login -u $username -p $password
+        docker push $DOCKERHUB_REGISTRY:$IMAGE_TAG
+        docker push  $DOCKERHUB_REGISTRY:$TAG
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    - name: Kubernetes Set Context
+      uses: Azure/k8s-set-context@v3.0
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    - name: Deploying the kubernetes manifest
+      run: |
+         
+         kubectl apply -f dep.yml

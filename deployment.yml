@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testing
+  labels:
+    app: nginx
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  minReadySeconds: 3
+  template:
+    metadata:
+      name: custom
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name:  nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "400Mi"
+            limits:
+              cpu: "200m"
+              memory: "400Mi"
+          env:
+            - name:  test
+              value:  test1
+          ports:
+            - containerPort: 80
+              name: http-port
